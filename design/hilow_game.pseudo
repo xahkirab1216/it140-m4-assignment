@@ -11,19 +11,43 @@
 START hilow_game
 
     # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+    INPUT lower_bound
+    INPUT upper_bound
 
-    # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+    WHILE lower_bound >= upper_bound
+        PRINT "The lower bound must be less than the upper bound."
+        INPUT lower_bound
+        INPUT upper_bound
+    END WHILE
+
+    # establish the number the player is trying to guess.
+    random_number = RANDOM(lower_bound, upper_bound)
 
     # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+    INPUT guess
+
+    WHILE guess < lower_bound OR guess > upper_bound
+        PRINT "Your guess must be between the lower and upper bounds."
+        INPUT guess
+    END WHILE
+
+    WHILE guess != random_number
+        If guess < random_number
+            PRINT "Nope, too low."
+        ELSE IF guess > random_number
+            PRINT "Nope, too high."
+        END IF
+
+        INPUT guess
+
+        WHILE guess < lower_bound OR guess > upper_bound
+            PRINT "Your guess must be between the lower and upper bounds."
+            INPUT guess
+        END WHILE
+
+    PRINT "You got it"
 
 END hilow_game
 
 # === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
+# Ai assistance: OpenAI ChatGPT was used to help develop and review the pseudocode.
